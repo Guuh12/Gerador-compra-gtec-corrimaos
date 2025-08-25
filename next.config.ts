@@ -22,6 +22,10 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react'],
   },
+  // Configurações para Render
+  output: 'standalone',
+  trailingSlash: false,
+  poweredByHeader: false,
 };
 
 export default nextConfig;
