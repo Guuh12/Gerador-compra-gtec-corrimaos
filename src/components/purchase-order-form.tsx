@@ -8,9 +8,9 @@ import { format } from "date-fns";
 import { ptBR } from 'date-fns/locale';
 import { CalendarIcon, Loader2 } from "lucide-react";
 
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
+import { cn } from "../lib/utils";
+import { Button } from "./ui/button";
+import { Calendar } from "./ui/calendar";
 import {
   Form,
   FormControl,
@@ -18,13 +18,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "./ui/form";
+import { Input } from "./ui/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "./ui/popover";
 import {
   Card,
   CardContent,
@@ -32,10 +32,10 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { generatePdf, type GeneratePdfInput } from "@/ai/flows/generate-pdf";
+} from "./ui/card";
+import { Textarea } from "./ui/textarea";
+import { useToast } from "../hooks/use-toast";
+import { generatePdf, type GeneratePdfInput } from "../ai/flows/generate-pdf";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "O nome é obrigatório." }),

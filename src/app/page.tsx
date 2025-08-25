@@ -1,4 +1,4 @@
-import PurchaseOrderForm from '@/components/purchase-order-form';
+import PurchaseOrderForm from '../components/purchase-order-form';
 
 export default function Home() {
   return (
