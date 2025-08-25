@@ -1,5 +1,4 @@
 import PurchaseOrderForm from '@/components/purchase-order-form';
-import { IMAGES } from '@/assets/images';
 
 export default function Home() {
   return (
@@ -9,7 +8,7 @@ export default function Home() {
           {/* Logo Gtec Corrimãos */}
           <div className="w-36 h-36 flex items-center justify-center">
             <img 
-              src={IMAGES.LOGO_PNG} 
+              src="/images/logo/icon-gtec-corrimaos.png" 
               alt="Gtec Corrimãos" 
               className="w-full h-full object-contain"
             />

@@ -3,10 +3,10 @@ import type {NextConfig} from 'next';
 const nextConfig: NextConfig = {
   /* config options here */
   typescript: {
-    ignoreBuildErrors: true,
+    // Removido ignoreBuildErrors para detectar problemas no build
   },
   eslint: {
-    ignoreDuringBuilds: true,
+    // Removido ignoreDuringBuilds para detectar problemas de linting
   },
   images: {
     remotePatterns: [
@@ -17,6 +17,10 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
+  },
+  // Otimizações para produção
+  experimental: {
+    optimizePackageImports: ['lucide-react'],
   },
 };
 
