@@ -26,15 +26,9 @@ const nextConfig: NextConfig = {
   output: 'standalone',
   trailingSlash: false,
   poweredByHeader: false,
-  // Otimizações de build para Render
-  swcMinify: true,
+  // Otimizações condicionais
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
-  },
-  // Reduzir uso de memória
-  onDemandEntries: {
-    maxInactiveAge: 25 * 1000,
-    pagesBufferLength: 2,
   },
 };
 
