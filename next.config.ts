@@ -18,7 +18,8 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Configurações para Render
+  // Configurações para Static Site no Render
+  output: 'export',
   trailingSlash: true,
   poweredByHeader: false,
 };
