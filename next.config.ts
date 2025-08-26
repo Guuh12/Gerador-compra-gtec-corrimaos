@@ -18,17 +18,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Otimizações para produção
-  experimental: {
-    optimizePackageImports: ['lucide-react'],
-  },
   // Configurações para Render
-  trailingSlash: false,
+  trailingSlash: true,
   poweredByHeader: false,
-  // Otimizações condicionais
-  compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
-  },
 };
 
 export default nextConfig;
