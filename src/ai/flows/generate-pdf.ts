@@ -1,4 +1,3 @@
-'use server';
 /**
  * @fileOverview Generates a PDF formatted as a Purchase Order from form data.
  *
@@ -9,8 +8,6 @@
 
 import { z } from 'zod';
 import { jsPDF } from 'jspdf';
-import { readFileSync } from 'fs';
-import { join } from 'path';
 
 const GeneratePdfInputSchema = z.object({
   name: z.string().describe('Nome do cliente.'),
@@ -48,25 +45,12 @@ export async function generatePdf(
   const footerColor = '#757575';
 
   const drawHeader = async () => {
-    // Logo Gtec Corrimãos - usando imagem PNG real
-    try {
-      // Lê a imagem do sistema de arquivos e converte para base64
-      const imagePath = join(process.cwd(), 'public', 'images', 'logo', 'icon-gtec-corrimaos.png');
-      const imageBuffer = readFileSync(imagePath);
-      const base64Image = imageBuffer.toString('base64');
-      
-      // Insere a imagem PNG real no PDF
-      doc.addImage(`data:image/png;base64,${base64Image}`, 'PNG', 15, 15, 25, 25);
-      
-    } catch (error) {
-      console.error('Erro ao carregar logo:', error);
-      // Fallback: logo simples
-      doc.setFillColor(0, 0, 0);
-      doc.rect(15, 15, 25, 25, 'F');
-      doc.setTextColor(220, 38, 38);
-      doc.setFontSize(8);
-      doc.text('GTEC', 17, 25);
-    }
+    // Logo Gtec Corrimãos - logo simples como fallback
+    doc.setFillColor(0, 0, 0);
+    doc.rect(15, 15, 25, 25, 'F');
+    doc.setTextColor(220, 38, 38);
+    doc.setFontSize(8);
+    doc.text('GTEC', 17, 25);
     
     // Main Header
     doc.setFont('helvetica', 'bold');
