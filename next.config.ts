@@ -23,7 +23,6 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['lucide-react'],
   },
   // Configurações para Render
-  output: 'standalone',
   trailingSlash: false,
   poweredByHeader: false,
   // Otimizações condicionais
