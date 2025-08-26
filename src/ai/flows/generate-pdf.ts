@@ -31,14 +31,21 @@ export type GeneratePdfOutput = z.infer<typeof GeneratePdfOutputSchema>;
 export async function generatePdf(
   input: GeneratePdfInput
 ): Promise<GeneratePdfOutput> {
-  const doc = new jsPDF();
+  // Configuração do documento PDF com melhor compatibilidade
+  const doc = new jsPDF({
+    orientation: 'portrait',
+    unit: 'mm',
+    format: 'a4',
+    compress: true
+  });
+  
   let y = 15; // Initial Y position
   const pageMargin = 15;
   const pageHeight = doc.internal.pageSize.height;
   const footerHeight = 40;
   const contentHeight = pageHeight - footerHeight - pageMargin;
 
-  // Colors
+  // Colors - usando valores RGB para melhor compatibilidade
   const primaryColor = '#1a237e';
   const secondaryColor = '#5c6bc0';
   const textColor = '#1c1c1c';
@@ -46,11 +53,14 @@ export async function generatePdf(
 
   const drawHeader = async () => {
     // Logo Gtec Corrimãos - logo simples como fallback
-    doc.setFillColor(0, 0, 0);
-    doc.rect(15, 15, 25, 25, 'F');
-    doc.setTextColor(220, 38, 38);
+    // Usando apenas texto estilizado para evitar problemas de fundo
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(12);
+    doc.setTextColor(220, 38, 38); // GTEC em vermelho
+    doc.text('GTEC', 17, 30);
     doc.setFontSize(8);
-    doc.text('GTEC', 17, 25);
+    doc.setTextColor(220, 38, 38); // CORRIMÃOS em vermelho também
+    doc.text('CORRIMÃOS', 17, 35);
     
     // Main Header
     doc.setFont('helvetica', 'bold');
